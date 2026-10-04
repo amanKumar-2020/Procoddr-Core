@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug app.js",
+            "runtimeExecutable": "/home/aman/.nvm/versions/node/v24.21.0/bin/node",
+            "skipFiles": ["<node_internals>/**"],
+            "program": "${workspaceFolder}/module_system/app.js"
+        }
+    ]
+}
