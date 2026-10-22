@@ -1,0 +1,26 @@
+{
+  "name": "word-counter-cli",
+  "version": "1.0.0",
+  "description": "A simple CLI tool to count words in a text file",
+  "type": "module",
+  "bin": {
+    "word-counter": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "cli",
+    "word-counter",
+    "node",
+    "typescript"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}

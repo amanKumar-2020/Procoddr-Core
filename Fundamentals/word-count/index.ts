@@ -1,32 +1,32 @@
-import { readFile } from "node:fs/promises"
-// import fs from "node:fs/promises"
+#!/usr/bin/env node
 
-let file_1: string = "";
-let file_2: string = "";
-let file_3: string = "";
+import { readFile } from "node:fs/promises";
+
+let file_1: string = process.argv[2] ?? "./file-1.txt";
+let fileToRead: string = "";
+
 try {
-     file_1 = await readFile("./file-1.txt","utf-8")
-     file_2 = await readFile("./file-2.txt","utf-8")
-     file_3 = await readFile("./file-3.txt","utf-8")
-    
+  fileToRead = await readFile(file_1, "utf-8");
 } catch (error) {
-    console.error("error while reading",error)
+  console.error("error while reading", error);
 }
-// console.log(file_1.split(" "));
-const words:string[] =file_1.split(" ");
+const words = fileToRead.split(/\s+/);
 
-interface OBJ{[key:string]:number}
-const obj:OBJ = {}
-
-for (const word of words){
-    const newword =word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
-    if(newword in obj){
-       obj[newword] = (obj[newword] || 0) + 1;
-    }else{
-        obj[newword] =1;
-    }
-    
-    
+interface OBJ {
+  [key: string]: number;
 }
-console.log(obj);
+const obj: OBJ = {};
 
+for (const word of words) {
+  if (word in obj) {
+    obj[word] = (obj[word] || 0) + 1;
+  } else {
+    obj[word] = 1;
+  }
+}
+const findWord = process.argv[3] ?? "";
+if (process.argv[3]) {
+  console.log(`${process.argv[3]}: ${obj[findWord]}`);
+} else {
+  console.log(obj);
+}
